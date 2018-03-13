@@ -10,7 +10,7 @@ class Container extends React.Component {
     
     render() {
         return (
-                <div className='main-container'>
+                <div className='container-fluid'>
                     <Title />
                     <Menu />
                 </div>

@@ -10,9 +10,29 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    /* font-family: helvetica */
 }
 
 .title {
-    font-family: Dosis
+    font-family: Montserrat;
+    font-size: 75px;
+    text-align: right
 }
+
+#content-container {
+    font-family: Questrial
+}
+
+.saved-jobs-container {
+    width: 95%;
+    margin: auto;
+    font-family: Questrial
+}
+
+.navigation {
+    font-size: 20px;
+}
+
+.second-link {
+    margin-left: 40px;
+}
+
