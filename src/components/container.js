@@ -1,5 +1,7 @@
-import React from 'react';
+import React from 'react'
 
+import Menu from './menu'
+import Title from './title'
 
 class Container extends React.Component {
     constructor(props) {
@@ -9,7 +11,8 @@ class Container extends React.Component {
     render() {
         return (
                 <div className='main-container'>
-                    Hello World
+                    <Title />
+                    <Menu />
                 </div>
         )
     } 
