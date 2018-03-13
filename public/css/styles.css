@@ -2,6 +2,22 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: lightgrey
 }
 
+body {
+    background-image: url("./images/bg_image1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+#content-container{
+    font-family: 'Archivo Narrow', sans-serif; 
+}
