@@ -3,6 +3,8 @@ const MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 mongoose.connect('mongodb://localhost:27017/JobList')
+mongoose.Promise = global.Promise;
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -55,19 +57,27 @@ router.route('/jobs')
         Job.find(function (err, jobs) {
             if (err)
                 res.send(err);
-            res.json(jobs);
+
+            if (req.query.title) {
+                Job.find(req.query.title, function (err, jobs) {
+                    var matchingJobs = []
+
+                    if (err)
+                        res.send(err);
+
+                    for(var i = 0; i < jobs.length; i++) { 
+                        if (jobs[i].jobTitle.toLowerCase().includes(req.query.title) ) { 
+                            matchingJobs= matchingJobs.concat(jobs[i])
+                        }
+                    }
+                    res.json(matchingJobs); 
+                });
+            }
+            else {
+                res.json(jobs);
+            }
         });
     });
-
-// router.route('/jobs/:title')
-
-//     .get (function (req,res) {
-//         Job.findByTitle (req.params.jobs.jobTitle, function (err,jobs) {
-//             if (err) 
-//                 res.send(err);
-//             res.json(jobs);
-//         });
-//     });
 
 
 app.use('/api', router);
@@ -75,10 +85,10 @@ app.use('/api', router);
 var app = express();
 
 var Job = mongoose.model('Job', {
-    jobTitle: { 
+    jobTitle: {
         type: String
     },
-    jobLink: { 
+    jobLink: {
         type: String
     },
     companyName: {
@@ -121,14 +131,14 @@ MongoClient.connect('mongodb://localhost:27017/JobList', (err, db) => {
                     companyLocation: nonSponseredJobs[i].find('span[class="location"]').text(),
                 });
 
-                var individualJob = new Job ({
+                var individualJob = new Job({
                     jobTitle: jobList[i].jobTitle,
                     jobLink: jobList[i].jobLink,
                     companyName: jobList[i].companyName,
                     companyLocation: jobList[i].companyLocation,
                 })
                 individualJob.save().then((doc) => {
-                    console.log ('Saved job', doc);
+                    console.log('Saved job', doc);
                 }), (e) => {
                     console.log('unable to save todo')
                 }

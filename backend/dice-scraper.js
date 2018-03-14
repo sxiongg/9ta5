@@ -3,6 +3,8 @@ const MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 mongoose.connect('mongodb://localhost:27017/JobList')
+mongoose.Promise = global.Promise;
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -55,7 +57,25 @@ router.route('/jobs')
         Job.find(function (err, jobs) {
             if (err)
                 res.send(err);
-            res.json(jobs);
+
+            if (req.query.title) {
+                Job.find(req.query.title, function (err, jobs) {
+                    var matchingJobs = []
+
+                    if (err)
+                        res.send(err);
+
+                    for(var i = 0; i < jobs.length; i++) { 
+                        if (jobs[i].jobTitle.toLowerCase().includes(req.query.title) ) { 
+                            matchingJobs= matchingJobs.concat(jobs[i])
+                        }
+                    }
+                    res.json(matchingJobs); 
+                });
+            }
+            else {
+                res.json(jobs);
+            }
         });
     });
 
