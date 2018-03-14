@@ -1,22 +1,15 @@
-// const initialState = {
-//     doggoImg: '',
-//     footerImages: []
-// }
+const initialState = {
+    searchResults: []
+}
 
-// const rootReducer = (state = initialState, action) => {
-//     if (action.type == 'CHANGE_DOGGO') {
-//         state = {
-//             ...state,
-//             doggoImg: action.payload
-//         }
-//     }
-//     if (action.type == 'LOAD_FOOTER') {
-//         state = {
-//             ...state,
-//             footerImages: state.footerImages.concat(action.payload)
-//         }
-//     }
-//     return state;
-// }
+const rootReducer = (state = initialState, action) => {
+    if (action.type == 'PUSH_API') {
+        state = {
+            searchResults: action.payload
+        }
+    }
+    
+    return state;
+}
 
-// export default rootReducer
+export default rootReducer

@@ -31,15 +31,41 @@ body {
 .saved-jobs-container {
     width: 95%;
     margin: auto;
-    font-family: Julius Sans One
+    font-family: 'Julius Sans One';
 }
 
 .navigation {
     font-size: 20px;
-    font-family: Julius Sans One
+    font-family: 'Julius Sans One';
+    font-weight: 980;
 }
 
 .second-link {
     margin-left: 30px;
 }
 
+.table-labels {
+    text-decoration: underline;
+}
+
+#jobs-font {
+    font-family:'Abel', sans-serif;
+}
+
+.search-results-field {
+    background-color: rgba(255,255,255, 0.4);
+}
+
+td {
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:5px;   
+  }
+ 
+.form-check {
+    padding-left:20px;  
+}
+
+label {
+    padding-left:10px;   
+}
