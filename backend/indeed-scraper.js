@@ -58,21 +58,52 @@ router.route('/jobs')
             if (err)
                 res.send(err);
 
-            if (req.query.title) {
+            if (req.query.location && req.query.title) {
+                Job.find(function (err, jobs) {
+                    var matchingBothJobs = []
+
+                    if (err)
+                        res.send(err);
+
+                    for (var i = 0; i < jobs.length; i++) {
+                        if (jobs[i].companyLocation.toLowerCase().includes(req.query.location) && jobs[i].jobTitle.toLowerCase().includes(req.query.title)) {
+                            matchingBothJobs = matchingBothJobs.concat(jobs[i])
+                        }
+                    }
+                    res.json(matchingBothJobs);
+                });
+            }
+            else if (req.query.title) {
                 Job.find(req.query.title, function (err, jobs) {
                     var matchingJobs = []
 
                     if (err)
                         res.send(err);
 
-                    for(var i = 0; i < jobs.length; i++) { 
-                        if (jobs[i].jobTitle.toLowerCase().includes(req.query.title) ) { 
-                            matchingJobs= matchingJobs.concat(jobs[i])
+                    for (var i = 0; i < jobs.length; i++) {
+                        if (jobs[i].jobTitle.toLowerCase().includes(req.query.title)) {
+                            matchingJobs = matchingJobs.concat(jobs[i])
                         }
                     }
-                    res.json(matchingJobs); 
+                    res.json(matchingJobs);
                 });
             }
+            else if (req.query.location) {
+                Job.find(req.query.location, function (err, jobs) {
+                    var matchingLocationJobs = []
+
+                    if (err)
+                        res.send(err);
+
+                    for (var i = 0; i < jobs.length; i++) {
+                        if (jobs[i].companyLocation.toLowerCase().includes(req.query.location)) {
+                            matchingLocationJobs = matchingLocationJobs.concat(jobs[i])
+                        }
+                    }
+                    res.json(matchingLocationJobs);
+                });
+            }
+
             else {
                 res.json(jobs);
             }
