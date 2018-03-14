@@ -12,6 +12,12 @@ body {
     background-size: cover;
 }
 
+#project-logo {
+    width: 80px;
+    padding-top: 35px;
+    margin-left: -20px
+}
+
 .title {
     font-family: Montserrat;
     font-size: 75px;
@@ -19,20 +25,21 @@ body {
 }
 
 #content-container {
-    font-family: Questrial
+    font-family: Julius Sans One
 }
 
 .saved-jobs-container {
     width: 95%;
     margin: auto;
-    font-family: Merriweather Sans;
+    font-family: Julius Sans One
 }
 
 .navigation {
     font-size: 20px;
+    font-family: Julius Sans One
 }
 
 .second-link {
-    margin-left: 40px;
+    margin-left: 30px;
 }
 
