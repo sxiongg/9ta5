@@ -1,11 +1,31 @@
 import React, { Component } from 'react'
-import SearchForm from './form';
+import axios from 'axios'
+import { connect } from 'react-redux'
+
+import { APILoad } from '../redux/actions'
+
+import SearchForm from './form'
+import SearchResults from './search-results'
 
 class JobSearch extends Component {
     constructor(props) {
         super(props);
         this.state = {}
     }
+
+    componentDidMount() {
+        axios.get('http://localhost:8080/api/jobs')
+            .then(response => {
+                console.log('api loaded successfully');
+
+                let apiResponse = response.data;
+                console.log(apiResponse);
+                
+                this.props.sendAPIToRedux(apiResponse);
+
+            })
+    }
+
     render() {
         return (
 
@@ -13,27 +33,20 @@ class JobSearch extends Component {
                 <div className="row">
 
                     <SearchForm />
-                    
-                    <div className="search-results-field col-md-9">
-                        <div className="row">
-                            <div className="col-md-6">
-                                <h5>Position</h5>
-                            </div>
-                            <div className="col-md-4">
-                                <h5>Company</h5>
-                            </div>
-                            <div className="col-md-2">
-                                <h5>Location</h5>
-                            </div>
-                        </div>
-                        {/* RENDER RESULTS HERE */}
-                    </div>
+
+                    <SearchResults />
 
                 </div>
 
             </div>
-                )
-           }
-       }
-        
-export default JobSearch;
+        )
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        sendAPIToRedux: apiResponse => dispatch(APILoad(apiResponse))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(JobSearch);
