@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import axios from 'axios'
 
+import {filterResults} from '../redux/actions'
+
 class SearchForm extends Component {
     constructor(props) {
         super(props);
@@ -35,14 +37,14 @@ class SearchForm extends Component {
                 </div>
 
                 <div className="submit-button">
-                    <button onClick={this.filterApiTitle.bind(this)} className="btn">Search</button>
+                    <button onClick={this.filterApi.bind(this)} className="btn">Search</button>
                 </div>
             </div>
          )
     }
 
-    filterApiTitle() {
-        axios.get('https://localhost:8080/api/jobs?title' + this.state.keywordInput)
+    filterApi() {
+        axios.get('http://localhost:8080/api/jobs?title=' + this.state.keywordInput)
             .then(response => {
                 this.props.sendStateToRedux(response.data);
             });

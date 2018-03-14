@@ -15,6 +15,8 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             searchResults: action.payload
         }
+
+        console.log(state.searchResults)
     }
     
     return state;
