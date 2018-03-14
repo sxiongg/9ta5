@@ -7,17 +7,17 @@ class SavedJobs extends Component {
     }
     render() { 
         return ( 
-            <div>
+            <div className="saved-jobs-container">
 
                 <div className="row">
-                    <div className="col-md-4">
-                        <h4>Position</h4>
+                    <div className="col-md-6">
+                        <h5>Position</h5>
                     </div>
                     <div className="col-md-4">
-                        <h4>Company</h4>
+                        <h5>Company</h5>
                     </div>
-                    <div className="col-md-4">
-                        <h4>Location</h4>
+                    <div className="col-md-2">
+                        <h5>Location</h5>
                     </div>
                 </div>
 

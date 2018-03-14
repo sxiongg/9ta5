@@ -10,14 +10,29 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    
 }
 
 .title {
-    font-family: 'Montserrat', sans-serif;
-
+    font-family: Montserrat;
+    font-size: 75px;
+    text-align: right
 }
 
-#content-container{
-    font-family: 'Archivo Narrow', sans-serif; 
+#content-container {
+    font-family: Questrial
 }
+
+.saved-jobs-container {
+    width: 95%;
+    margin: auto;
+    font-family: Merriweather Sans;
+}
+
+.navigation {
+    font-size: 20px;
+}
+
+.second-link {
+    margin-left: 40px;
+}
+

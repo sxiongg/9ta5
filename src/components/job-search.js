@@ -11,20 +11,20 @@ class JobSearch extends Component {
             <div id="content-container">
                 <div className="row">
 
-                    <div className="col-md-3">
+                    <div className="search-inputs-field col-md-3">
                         <div className="form-group">
-                            <label htmlFor="location-input"> Location: </label>
+                            <label htmlFor="location-input"> <h4>Location:</h4> </label>
                             <input id="location-input" className="form-control" type="text" />
                         </div>
 
-                        {/* <div className='form-group col-md-3'>
-                            <label htmlFor="locationInput"> Location: </label>
-                            <input id='locationInput' className='form-control' type="text"/>
-                        </div> */}
+                        <div className='form-group'>
+                            <label htmlFor="keywordInput"> <h4> Keywords: </h4> </label>
+                            <input id='keywordInput' className='form-control' type="text"/>
+                        </div>
 
                         <div className="form-check">
                             <input type="checkbox" id="include-internships"/>
-                            <label htmlFor="include-internships">Include Internships</label>
+                            <label htmlFor="include-internships">Only Internships</label>
                         </div>
 
                         <div className="form-check">
@@ -33,16 +33,17 @@ class JobSearch extends Component {
                         </div>
                     </div>
                     
-                    <div className="col-md-9">
+
+                    <div className="search-results-field col-md-9">
                         <div className="row">
-                            <div className="col-md-3">
-                                <p>Position</p>
+                            <div className="col-md-6">
+                                <h5>Position</h5>
                             </div>
-                            <div className="col-md-3">
-                                <p>Company</p>
+                            <div className="col-md-4">
+                                <h5>Company</h5>
                             </div>
-                            <div className="col-md-3">
-                                <p>Location</p>
+                            <div className="col-md-2">
+                                <h5>Location</h5>
                             </div>
                         </div>
                         {/* RENDER RESULTS HERE */}
