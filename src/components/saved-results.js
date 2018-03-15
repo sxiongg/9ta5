@@ -34,9 +34,25 @@ class SavedJobs extends Component {
                     </tbody>
                 </table>
 
-                <button className="btn btn block col-md-12"> Share Jobs </button>
+                <button className="btn btn block col-md-12" onClick={ this.sendEmail.bind(this) }> Share Jobs </button>
             </div>
         )
+    }
+
+    sendEmail() {
+        let emailBody = '';
+
+        for(var i = 0; i < this.props.savedResults.length; i++) {
+            let position = this.props.savedResults[i].jobTitle;
+            let company = this.props.savedResults[i].companyName;
+            let city = this.props.savedResults[i].companyLocation;
+            let link = this.props.savedResults[i].jobLink;
+            
+            var result = i+1 + ") " + position + " @"  + company + " in " + city + '%0A' + '      ' + link + '%0A' + '%0A' ; 
+            emailBody = emailBody.concat(result)
+        }
+         
+        document.location = "mailto:"+"?subject="+"&body="+emailBody;
     }
 }
 

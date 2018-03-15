@@ -135,6 +135,7 @@ td:nth-child(2) {
     font-size: 15px
 }
 
+<<<<<<< HEAD
 .table-labels {
     text-decoration: underline;
 }
@@ -177,6 +178,16 @@ label {
  a:hover {
     text-decoration: none;
  }
+=======
+.page-footer {
+    display: flex;
+    justify-content: center
+}
+
+.page-button {
+    margin-right: 15px
+}
+>>>>>>> 1039f8e33aa271b2e831a92eaf6321f501efe865
 
  .nav-link:hover {
     -moz-box-shadow: 0 0 10px #ccc;
