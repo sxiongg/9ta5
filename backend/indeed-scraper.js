@@ -155,18 +155,18 @@ MongoClient.connect('mongodb://localhost:27017/JobList', (err, db) => {
 
             for (var i = 0; i < nonSponseredJobs.length; i++) {
 
-                jobList = jobList.concat({
-                    jobTitle: nonSponseredJobs[i].find('a[class="turnstileLink"]').text(),
-                    jobLink: 'https:indeed.com' + nonSponseredJobs[i].find('a[class="turnstileLink"]').attr('href'),
-                    companyName: nonSponseredJobs[i].find('span[class="company"]').text(),
-                    companyLocation: nonSponseredJobs[i].find('span[class="location"]').text(),
-                });
+                // jobList = jobList.concat({
+                //     jobTitle: nonSponseredJobs[i].find('a[class="turnstileLink"]').text(),
+                //     jobLink: 'https:indeed.com' + nonSponseredJobs[i].find('a[class="turnstileLink"]').attr('href'),
+                //     companyName: nonSponseredJobs[i].find('span[class="company"]').text(),
+                //     companyLocation: nonSponseredJobs[i].find('span[class="location"]').text(),
+                // });
 
                 var individualJob = new Job({
-                    jobTitle: jobList[i].jobTitle,
-                    jobLink: jobList[i].jobLink,
-                    companyName: jobList[i].companyName,
-                    companyLocation: jobList[i].companyLocation,
+                    jobTitle: nonSponseredJobs[i].find('a[class="turnstileLink"]').text(),
+                    jobLink: 'https:indeed.com' + nonSponseredJobs[i].find('a[class="turnstileLink"]').attr('href'),
+                    companyName: nonSponseredJobs[i].find('span[class="company"]').text().replace('\n', '').replace('\n', ''),
+                    companyLocation: nonSponseredJobs[i].find('span[class="location"]').text(),
                 })
                 individualJob.save().then((doc) => {
                     console.log('Saved job', doc);

@@ -165,10 +165,10 @@ MongoClient.connect('mongodb://localhost:27017/JobList', (err, db) => {
                 });
 
                 var individualJob = new Job ({
-                    jobTitle: jobList[i].jobTitle,
-                    jobLink: jobList[i].jobLink,
-                    companyName: jobList[i].companyName,
-                    companyLocation: jobList[i].companyLocation,
+                    jobTitle: scrapedResults[i].find('span.just_job_title').text().remove('\n'),
+                    jobLink: scrapedResults[i].find('a.job_link').attr('href'),
+                    companyName: scrapedResults[i].find('a.t_org_link').text(),
+                    companyLocation: scrapedResults[i].find('a.t_location_link').text()
                 })
                 individualJob.save().then((doc) => {
                     console.log ('Saved job', doc);
