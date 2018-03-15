@@ -13,7 +13,7 @@ class Menu extends React.Component {
             <div className="navigation">
                 <ul className="nav-bar">
                     <Link to="/" className="nav-item nav-link">Home</Link>
-                    <Link to="/people" className="nav-item nav-link second-link">Saved Jobs</Link>
+                    <Link to="/people" className="nav-item nav-link pull-right">Saved Jobs</Link>
                 </ul>
                 <Switch>
                     <Route exact path='/' component={JobSearch} />

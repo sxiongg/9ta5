@@ -158,18 +158,19 @@ MongoClient.connect('mongodb://localhost:27017/JobList', (err, db) => {
 
 
             for (var i = 0; i < scrapedResults.length; i++) {
-                jobList = jobList.concat ({
+                
+            //     jobList = jobList.concat ({
+            //         jobTitle: scrapedResults[i].find('a.loggedInVisited > span').text(),
+            //         jobLink: 'https:dice.com' + scrapedResults[i].find('a.dice-btn-link').attr('href'),
+            //         companyName: scrapedResults[i].find('a.dice-btn-link > span[class="compName"]').first().text(),
+            //         companyLocation: scrapedResults[i].find('span[class="jobLoc"]').text()
+            //     })
+
+                var individualJob = new Job ({
                     jobTitle: scrapedResults[i].find('a.loggedInVisited > span').text(),
                     jobLink: 'https:dice.com' + scrapedResults[i].find('a.dice-btn-link').attr('href'),
                     companyName: scrapedResults[i].find('a.dice-btn-link > span[class="compName"]').first().text(),
                     companyLocation: scrapedResults[i].find('span[class="jobLoc"]').text()
-                })
-
-                var individualJob = new Job ({
-                    jobTitle: jobList[i].jobTitle,
-                    jobLink: jobList[i].jobLink,
-                    companyName: jobList[i].companyName,
-                    companyLocation: jobList[i].companyLocation,
                 })
                 individualJob.save().then((doc) => {
                     console.log ('Saved job', doc);
