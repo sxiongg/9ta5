@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class SavedJobs extends Component {
     constructor(props) {
@@ -7,27 +8,45 @@ class SavedJobs extends Component {
     }
     render() { 
         return ( 
-            <div className="saved-jobs-container">
+            <div className="saved-jobs-field ">
+            <table className="table col-md-12">
+                <thead>
+                    <tr>
+                        <th className="col-md-4">Position</th>
+                        <th className="col-md-4">Company</th>
+                        <th className="col-md-4">Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/* Map saved jobs from state */}
+                    
+                    {
+                        this.props.savedResults.map((item, index) => {
+                            return (
+                            <tr key={index}>
+                                <td className="col-md-4"> {item.jobTitle} </td>
+                                <td className="col-md-4"> {item.companyName} </td>
+                                <td className="col-md-4"> {item.companyLocation} </td>
+                            </tr>)
 
-                <div className="row">
-                    <div className="col-md-6">
-                        <h5>Position</h5>
-                    </div>
-                    <div className="col-md-4">
-                        <h5>Company</h5>
-                    </div>
-                    <div className="col-md-2">
-                        <h5>Location</h5>
-                    </div>
-                </div>
+                        })
+                    }
 
-                {/* RENDER SAVED JOBS HERE */}
+        
 
 
-                {/* EMAIL JOBS */}
-            </div>
+                </tbody>
+            </table>
+
+        </div>
          )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        savedResults: state.savedResults
+    }
+}
  
-export default SavedJobs;
+export default connect(mapStateToProps)(SavedJobs);
