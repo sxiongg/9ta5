@@ -34,12 +34,8 @@ class SearchResults extends Component {
                             })
                         }
 
-            
-
-
                     </tbody>
                 </table>
-
             </div>
         )
     }
