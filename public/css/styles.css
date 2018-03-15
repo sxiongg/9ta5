@@ -69,3 +69,22 @@ td {
 label {
     padding-left:10px;   
 }
+
+.submit-button {
+    padding-top:10px; 
+}
+
+ a {
+    color: #346d6d;
+    text-decoration: none;
+ }
+
+ a:hover {
+    text-decoration: none;
+ }
+
+ .nav-link:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+ }

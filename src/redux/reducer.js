@@ -1,12 +1,22 @@
 const initialState = {
-    searchResults: []
+    searchResults: [],
 }
 
 const rootReducer = (state = initialState, action) => {
     if (action.type == 'PUSH_API') {
         state = {
+            ...state,
             searchResults: action.payload
         }
+    }
+
+    if (action.type == 'FILTER_KEYWORD') {
+        state = {
+            ...state,
+            searchResults: action.payload
+        }
+
+        console.log(state.searchResults)
     }
     
     return state;

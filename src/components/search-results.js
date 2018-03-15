@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 class SearchResults extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+        }
     }
     render() {
         return (
@@ -12,9 +13,9 @@ class SearchResults extends Component {
                 <table>
                     <thead>
                         <tr className='table-labels'>
-                            <th>Position</th>
-                            <th>Company</th>
-                            <th>Location</th>
+                            <th className='col-md-3'>Position</th>
+                            <th className='col-md-3'>Company</th>
+                            <th className='col-md-1'>Location</th>
                         </tr>
                     </thead>
                     <tbody id='jobs-font'>
@@ -23,7 +24,7 @@ class SearchResults extends Component {
                             this.props.jobResults.map((item, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td> {item.jobTitle} </td>
+                                        <td> <a href={item.jobLink}> {item.jobTitle}</a></td>
                                         <td> {item.companyName} </td>
                                         <td> {item.companyLocation} </td>
                                     </tr>)
@@ -31,13 +32,13 @@ class SearchResults extends Component {
                             })
                         }
 
+
+
+
                     </tbody>
                 </table>
 
             </div>
-
-
-
         )
     }
 }
