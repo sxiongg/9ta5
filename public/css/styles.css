@@ -135,4 +135,12 @@ td:nth-child(2) {
     font-size: 15px
 }
 
+.page-footer {
+    display: flex;
+    justify-content: center
+}
+
+.page-button {
+    margin-right: 15px
+}
 

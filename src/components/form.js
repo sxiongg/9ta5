@@ -50,7 +50,10 @@ class SearchForm extends Component {
                 this.props.sendStateToRedux(response.data);
             });
     }
+    
 }
+
+
 
 const mapDispatchToProps = dispatch => {
     return {
