@@ -58,7 +58,7 @@ router.route('/jobs')
             if (err)
                 res.send(err);
 
-            if (req.query.location && req.query.title) {
+            else if (req.query.location && req.query.title) {
                 Job.find(function (err, jobs) {
                     var matchingBothJobs = []
 
@@ -71,21 +71,6 @@ router.route('/jobs')
                         }
                     }
                     res.json(matchingBothJobs);
-                });
-            }
-            else if (req.query.title) {
-                Job.find(req.query.title, function (err, jobs) {
-                    var matchingJobs = []
-
-                    if (err)
-                        res.send(err);
-
-                    for (var i = 0; i < jobs.length; i++) {
-                        if (jobs[i].jobTitle.toLowerCase().includes(req.query.title)) {
-                            matchingJobs = matchingJobs.concat(jobs[i])
-                        }
-                    }
-                    res.json(matchingJobs);
                 });
             }
             else if (req.query.location) {
@@ -101,6 +86,21 @@ router.route('/jobs')
                         }
                     }
                     res.json(matchingLocationJobs);
+                });
+            }
+            else if (req.query.title) {
+                Job.find(req.query.title, function (err, jobs) {
+                    var matchingJobs = []
+
+                    if (err)
+                        res.send(err);
+
+                    for (var i = 0; i < jobs.length; i++) {
+                        if (jobs[i].jobTitle.toLowerCase().includes(req.query.title)) {
+                            matchingJobs = matchingJobs.concat(jobs[i])
+                        }
+                    }
+                    res.json(matchingJobs);
                 });
             }
 
@@ -156,13 +156,6 @@ MongoClient.connect('mongodb://localhost:27017/JobList', (err, db) => {
 
 
             for (var i = 0; i < scrapedResults.length; i++) {
-                
-            //     jobList = jobList.concat ({
-            //         jobTitle: scrapedResults[i].find('a.loggedInVisited > span').text(),
-            //         jobLink: 'https:dice.com' + scrapedResults[i].find('a.dice-btn-link').attr('href'),
-            //         companyName: scrapedResults[i].find('a.dice-btn-link > span[class="compName"]').first().text(),
-            //         companyLocation: scrapedResults[i].find('span[class="jobLoc"]').text()
-            //     })
 
                 var individualJob = new Job ({
                     jobTitle: scrapedResults[i].find('a.loggedInVisited > span').text(),
@@ -175,19 +168,6 @@ MongoClient.connect('mongodb://localhost:27017/JobList', (err, db) => {
                 }), (e) => {
                     console.log('unable to save todo')
                 }
-
-                // db.collection('Jobs').insertOne({
-
-                //     jobTitle: resultsArr[i].jobTitle,
-                //     jobLink: resultsArr[i].jobLink,
-                //     companyName: resultsArr[i].companyName,
-                //     companyLocation: resultsArr[i].companyLocation,
-                // }, (err, result) => {
-                //     if (err) {
-                //         return console.log('Unable to insert job', err);
-                //     }
-                //     console.log(JSON.stringify(result.ops, undefined, 2));
-                // });
             }
         });
     }

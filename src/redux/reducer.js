@@ -19,6 +19,15 @@ const rootReducer = (state = initialState, action) => {
 
         console.log(state.searchResults)
     }
+
+    if (action.type == 'FILTER_LOCATION') {
+        state = {
+            ...state,
+            searchResults: action.payload
+        }
+
+        console.log(state.searchResults)
+    }
     
     if (action.type == 'SAVE_JOB') {
         state = {

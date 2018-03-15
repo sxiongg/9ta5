@@ -58,7 +58,7 @@ router.route('/jobs')
             if (err)
                 res.send(err);
 
-            if (req.query.location && req.query.title) {
+            else if (req.query.location && req.query.title) {
                 Job.find(function (err, jobs) {
                     var matchingBothJobs = []
 
@@ -71,21 +71,6 @@ router.route('/jobs')
                         }
                     }
                     res.json(matchingBothJobs);
-                });
-            }
-            else if (req.query.title) {
-                Job.find(req.query.title, function (err, jobs) {
-                    var matchingJobs = []
-
-                    if (err)
-                        res.send(err);
-
-                    for (var i = 0; i < jobs.length; i++) {
-                        if (jobs[i].jobTitle.toLowerCase().includes(req.query.title)) {
-                            matchingJobs = matchingJobs.concat(jobs[i])
-                        }
-                    }
-                    res.json(matchingJobs);
                 });
             }
             else if (req.query.location) {
@@ -103,13 +88,27 @@ router.route('/jobs')
                     res.json(matchingLocationJobs);
                 });
             }
+            else if (req.query.title) {
+                Job.find(req.query.title, function (err, jobs) {
+                    var matchingJobs = []
+
+                    if (err)
+                        res.send(err);
+
+                    for (var i = 0; i < jobs.length; i++) {
+                        if (jobs[i].jobTitle.toLowerCase().includes(req.query.title)) {
+                            matchingJobs = matchingJobs.concat(jobs[i])
+                        }
+                    }
+                    res.json(matchingJobs);
+                });
+            }
 
             else {
                 res.json(jobs);
             }
         });
     });
-
 
 app.use('/api', router);
 
@@ -155,13 +154,6 @@ MongoClient.connect('mongodb://localhost:27017/JobList', (err, db) => {
 
             for (var i = 0; i < nonSponseredJobs.length; i++) {
 
-                // jobList = jobList.concat({
-                //     jobTitle: nonSponseredJobs[i].find('a[class="turnstileLink"]').text(),
-                //     jobLink: 'https:indeed.com' + nonSponseredJobs[i].find('a[class="turnstileLink"]').attr('href'),
-                //     companyName: nonSponseredJobs[i].find('span[class="company"]').text(),
-                //     companyLocation: nonSponseredJobs[i].find('span[class="location"]').text(),
-                // });
-
                 var individualJob = new Job({
                     jobTitle: nonSponseredJobs[i].find('a[class="turnstileLink"]').text(),
                     jobLink: 'https:indeed.com' + nonSponseredJobs[i].find('a[class="turnstileLink"]').attr('href'),
@@ -173,19 +165,6 @@ MongoClient.connect('mongodb://localhost:27017/JobList', (err, db) => {
                 }), (e) => {
                     console.log('unable to save todo')
                 }
-
-                // db.collection('Jobs').insertOne({
-
-                //     jobTitle: jobList[i].jobTitle,
-                //     jobLink: jobList[i].jobLink,
-                //     companyName: jobList[i].companyName,
-                //     companyLocation: jobList[i].companyLocation,
-                // }, (err, result) => {
-                //     if (err) {
-                //         return console.log('Unable to insert job', err);
-                //     }
-                //     console.log(JSON.stringify(result.ops, undefined, 2));
-                // });
             }
         });
     }
