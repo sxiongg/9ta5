@@ -135,50 +135,6 @@ td:nth-child(2) {
     font-size: 15px
 }
 
-<<<<<<< HEAD
-.table-labels {
-    text-decoration: underline;
-}
-
-#jobs-font {
-    font-family:'Abel', sans-serif;
-}
-
-.search-results-field {
-    background-color: rgba(255,255,255, 0.4);
-}
-
-td {
-    padding-top:5px;
-    padding-bottom:5px;
-    padding-right:5px;   
-  }
- 
-.form-check {
-    padding-left:20px;  
-}
-
-label {
-    padding-left:10px;   
-}
-
-.submit-button {
-    padding-top:10px; 
-
-}
-.btn-primary {
-    background-color:#238a92 !important;
-}
-
- a {
-    color: #346d6d;
-    text-decoration: none;
- }
-
- a:hover {
-    text-decoration: none;
- }
-=======
 .page-footer {
     display: flex;
     justify-content: center
@@ -187,7 +143,6 @@ label {
 .page-button {
     margin-right: 15px
 }
->>>>>>> 1039f8e33aa271b2e831a92eaf6321f501efe865
 
  .nav-link:hover {
     -moz-box-shadow: 0 0 10px #ccc;
