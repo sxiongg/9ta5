@@ -1,5 +1,6 @@
 const initialState = {
     searchResults: [],
+    savedResults: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -19,6 +20,12 @@ const rootReducer = (state = initialState, action) => {
         console.log(state.searchResults)
     }
     
+    if (action.type == 'SAVE_JOB') {
+        state = {
+            ...state,
+            savedResults: state.savedResults.concat(action.payload)
+        }
+    }
     return state;
 }
 

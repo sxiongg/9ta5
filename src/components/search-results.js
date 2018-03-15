@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { pushJobToSaved } from '../redux/actions'
+
 class SearchResults extends Component {
     constructor(props) {
         super(props);
@@ -10,7 +12,7 @@ class SearchResults extends Component {
     render() {
         return (
             <div className="search-results-field col-md-9">
-                <table>
+                <table className="table">
                     <thead>
                         <tr className='table-labels'>
                             <th className='col-md-3'>Position</th>
@@ -41,6 +43,10 @@ class SearchResults extends Component {
             </div>
         )
     }
+    // Function that sends clicked job to the reducer 
+    saveJob(item) {
+        this.props.sendJobToRedux(item);
+    }
 }
 
 const mapStateToProps = state => {
@@ -50,4 +56,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(SearchResults);
+const mapDispatchToProps = dispatch => {
+    return {
+        sendJobToRedux: object => dispatch(pushJobToSaved(object))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

@@ -14,6 +14,7 @@ class SearchForm extends Component {
          }
     }
     render() { 
+        // Form for filtering the API results
         return ( 
             <div className="search-inputs-field col-md-3">
                 <div className="form-group">
@@ -35,14 +36,14 @@ class SearchForm extends Component {
                 <input type="checkbox" id="exclude-internships"/>
                     <label htmlFor="exclude-internships">Exclude Internships</label>
                 </div>
-
+                {/* Click event */}
                 <div className="submit-button">
                     <button onClick={this.filterApi.bind(this)} className="btn">Search</button>
                 </div>
             </div>
          )
     }
-
+    // Function that does an axios api call with a new URL
     filterApi() {
         axios.get('http://localhost:8080/api/jobs?title=' + this.state.keywordInput)
             .then(response => {

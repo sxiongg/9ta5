@@ -13,6 +13,7 @@ class JobSearch extends Component {
         this.state = {}
     }
 
+    // API request on page load (showing all jobs)
     componentDidMount() {
         axios.get('http://localhost:8080/api/jobs')
             .then(response => {
@@ -20,7 +21,7 @@ class JobSearch extends Component {
 
                 let apiResponse = response.data;
                 console.log(apiResponse);
-                
+
                 this.props.sendAPIToRedux(apiResponse);
 
             })
