@@ -16,7 +16,7 @@ class SearchForm extends Component {
     render() { 
         // Form for filtering the API results
         return ( 
-            <div className="search-inputs-field col-md-3">
+            <div className="search-input-field col-md-3">
                 <div className="form-group">
                     <label htmlFor="location-input"> Location: </label>
                     <input value={this.state.locationInput} placeholder="Irvine" id="location-input" className="form-control" type="text" />
@@ -38,7 +38,7 @@ class SearchForm extends Component {
                 </div>
                 {/* Click event */}
                 <div className="submit-button">
-                    <button onClick={this.filterApi.bind(this)} className="btn">Search</button>
+                    <button onClick={this.filterApi.bind(this)} className="btn btn-primary btn-block">Search</button>
                 </div>
             </div>
          )

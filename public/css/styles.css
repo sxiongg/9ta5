@@ -21,26 +21,100 @@ body {
 .title {
     font-family: Montserrat;
     font-size: 75px;
-    text-align: right
+    text-align: right;
 }
 
-#content-container {
-    font-family: Julius Sans One
+.header {
+    margin-bottom: 25px
 }
 
-.saved-jobs-container {
+.search-results-field {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.saved-jobs-field {
     width: 95%;
     margin: auto;
-    font-family: Julius Sans One
+    font-family: Julius Sans One;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.4);
+
+}
+
+.search-input-field {
+    font-size: 17px;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 5px;
+    border-radius: 6px
+}
+
+.form-check {
+    font-size: 16px;
+    margin-left: 10px
+}
+
+div.form-check label {
+    margin-left: 10px
 }
 
 .navigation {
     font-size: 20px;
-    font-family: Julius Sans One
+    font-family: Julius Sans One;
+    margin-left: 10px
 }
 
-.second-link {
-    margin-left: 30px;
+.nav-link:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
 }
+
+.nav-link {
+    text-decoration: none;
+}
+
+td a {
+    text-decoration: none;
+    color: dimgrey
+}
+
+td a:hover {
+    color: steelblue;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 18px
+
+}
+
+tr.result-item:hover {
+    background-color: seashell;
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 5px #ccc;
+}
+
+tr.result-item {
+    font-size: 17px
+}
+
+.submit-button {
+    margin: 20px 0 0 0
+}
+
+
+.btn-block:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+    color: #ffffff;
+}
+
+
 
 

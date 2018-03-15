@@ -12,21 +12,21 @@ class SavedJobs extends Component {
             <table className="table col-md-12">
                 <thead>
                     <tr>
-                        <th className="col-md-4">Position</th>
-                        <th className="col-md-4">Company</th>
-                        <th className="col-md-4">Location</th>
+                        <th className="col-md-5">Position</th>
+                        <th className="col-md-5">Company</th>
+                        <th className="col-md-2">Location</th>
                     </tr>
                 </thead>
                 <tbody>
                     {/* Map saved jobs from state */}
-                    
+
                     {
                         this.props.savedResults.map((item, index) => {
                             return (
-                            <tr key={index}>
-                                <td className="col-md-4"> {item.jobTitle} </td>
-                                <td className="col-md-4"> {item.companyName} </td>
-                                <td className="col-md-4"> {item.companyLocation} </td>
+                            <tr key={index} className="result-item">
+                                <td className="col-md-5"> <a href={ item.jobLink } target="_blank"> {item.jobTitle} </a> </td>
+                                <td className="col-md-5"> {item.companyName} </td>
+                                <td className="col-md-2"> {item.companyLocation} </td>
                             </tr>)
 
                         })
