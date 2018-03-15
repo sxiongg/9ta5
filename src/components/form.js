@@ -42,6 +42,9 @@ class SearchForm extends Component {
                 <div className="submit-button">
                     <button onClick={this.filterApi.bind(this)} className="btn btn-primary btn-block">Search</button>
                 </div>
+                
+                <img id="pin-logo" className="col-md-2" src="././css/images/pin.png"/>
+                <p className='double-click'>Double click Job column to save</p>
             </div>
          )
     }
@@ -125,8 +128,9 @@ class SearchForm extends Component {
             }); 
         }
     }
-
 }
+
+
 
 const mapDispatchToProps = dispatch => {
     return {
