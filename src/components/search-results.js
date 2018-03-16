@@ -70,6 +70,7 @@ class SearchResults extends Component {
     // Function that sends clicked job to the reducer 
     saveJob(item) {
         this.props.sendJobToRedux(item);
+        alert('Posting added to your Saved Jobs!')
 
     }
 

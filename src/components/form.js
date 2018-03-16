@@ -44,7 +44,7 @@ class SearchForm extends Component {
                 </div>
                 
                 <img id="pin-logo" className="col-md-2" src="././css/images/pin.png"/>
-                <p className='double-click'>Double click Job column to save</p>
+                <p className='double-click'>Double click result to save!</p>
             </div>
          )
     }

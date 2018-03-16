@@ -5,3 +5,5 @@ export const filterResults = api => ({type: 'FILTER_KEYWORD', payload: api})
 export const filterResultsByLocation = api => ({type: 'FILTER_LOCATION', payload: api})
 
 export const pushJobToSaved = object => ({type: 'SAVE_JOB', payload: object})
+
+export const removeFromSaved = arr => ({type: 'DELETE_JOB', payload: arr})

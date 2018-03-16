@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import {removeFromSaved} from '../redux/actions'
+
 class SavedJobs extends Component {
     constructor(props) {
         super(props);
@@ -23,7 +25,7 @@ class SavedJobs extends Component {
                         {
                             this.props.savedResults.map((item, index) => {
                                 return (
-                                    <tr key={index} className="result-item">
+                                    <tr key={index} className="result-item" onDoubleClick={this.deleteSavedJob.bind(this, item, index)}>
                                         <td className="col-md-5"> <a href={item.jobLink} target="_blank"> {item.jobTitle} </a> </td>
                                         <td className="col-md-5"> {item.companyName} </td>
                                         <td className="col-md-2"> {item.companyLocation} </td>
@@ -34,9 +36,20 @@ class SavedJobs extends Component {
                     </tbody>
                 </table>
 
-                <button className="btn btn block col-md-12" onClick={ this.sendEmail.bind(this) }> Share Jobs </button>
+                <img id="pin-logo" src="././css/images/pin.png"/>
+                <p className='double-click'>Double click job to remove.</p>
+
+                <button className="btn btn-block col-md-12" onClick={ this.sendEmail.bind(this) }> Share Jobs </button>
             </div>
         )
+    }
+
+    deleteSavedJob(item, index) {
+        var savedArrCopy = this.props.savedResults.slice();
+        var i = savedArrCopy.indexOf(item);
+        savedArrCopy.splice(i, 1);
+
+        this.props.deleteJobFromRedux(savedArrCopy)
     }
 
     sendEmail() {
@@ -62,5 +75,10 @@ const mapStateToProps = state => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        deleteJobFromRedux: arr => dispatch(removeFromSaved(arr))
+    }
+}
 
-export default connect(mapStateToProps)(SavedJobs);
+export default connect(mapStateToProps, mapDispatchToProps)(SavedJobs);

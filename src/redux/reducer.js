@@ -35,6 +35,13 @@ const rootReducer = (state = initialState, action) => {
             savedResults: state.savedResults.concat(action.payload)
         }
     }
+
+    if (action.type == 'DELETE_JOB') {
+        state = {
+            ...state,
+            savedResults: action.payload
+        }
+    }
     return state;
 }
 
