@@ -15,7 +15,6 @@ class SearchForm extends Component {
             keywordInput: '',
         }
     }
-
     render() {
         // Form for filtering the API results
         return (

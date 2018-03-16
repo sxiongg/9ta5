@@ -29,5 +29,3 @@ command line: node backend/ziprecruiter-scraper.js
 AFTER run npm start
 
 Access site from localhost in browser
-
-

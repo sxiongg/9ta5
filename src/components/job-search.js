@@ -23,13 +23,12 @@ class JobSearch extends Component {
                 console.log(apiResponse);
 
                 this.props.sendAPIToRedux(apiResponse);
-
             })
     }
 
     render() {
         return (
-
+            
             <div id="content-container">
                 <div className="row">
 

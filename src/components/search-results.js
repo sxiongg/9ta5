@@ -22,7 +22,6 @@ class SearchResults extends Component {
         for (let i = 1; i <= Math.ceil(this.props.jobResults.length / this.state.jobsPerPage); i++) {
             pageNumbers.push(i);
         }
-
         var buttonClasses = classNames({
             'previous-page-button': true,
             'btn': true,
@@ -40,7 +39,6 @@ class SearchResults extends Component {
                         </tr>
                     </thead>
                     <tbody id='jobs-font'>
-
                         {
                             currentJobs.map((item, index) => {
 
@@ -51,10 +49,8 @@ class SearchResults extends Component {
                                         <td className="col-md-5"> {item.companyName} </td>
                                         <td className="col-md-2"> {item.companyLocation} </td>
                                     </tr>)
-
                             })
                         }
-
                     </tbody>
                 </table>
 
@@ -62,15 +58,6 @@ class SearchResults extends Component {
                     {/* Render Page Buttons */}
                     <button onClick={this.previousPage.bind(this)} className={buttonClasses}> PREVIOUS </button>
                     <button onClick={this.nextPage.bind(this)} className="btn page-button"> NEXT </button>
-                    {/* {
-                            pageNumbers.map((number, index) => {
-
-                            return (
-                                <button onClick={this.nextPage.bind(this)} key={index} id={number} className="btn page-button"> {number} </button>
-                            )
-
-                        })
-                    } */}
                 </div>
             </div>
         )
@@ -80,11 +67,10 @@ class SearchResults extends Component {
     saveJob(item) {
         this.props.sendJobToRedux(item);
         alert('Posting added to your Saved Jobs!')
-
     }
 
 
-    //Function that changes page
+    //Functions that change page
     nextPage(e) {
         this.setState((prevState) => {
             return {
@@ -94,29 +80,14 @@ class SearchResults extends Component {
     }
 
     previousPage(e) {
-
         console.log(document.getElementsByClassName('previous-page-button'))
         this.setState((prevState) => {
-
             return {
                 currentPage: prevState.currentPage - 1
             }
         })
-
     }
-
-
-    // console.log (this.props.jobResults)
-    // console.log(i)
-    // console.log(page)
-
-    // this.setState({
-    //     currentPage: Number(e.target.id)
-    // })
-
-
 }
-
 
 const mapStateToProps = state => {
     return {

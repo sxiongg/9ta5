@@ -21,7 +21,6 @@ class SavedJobs extends Component {
                     </thead>
                     <tbody>
                         {/* Map saved jobs from state */}
-
                         {
                             this.props.savedResults.map((item, index) => {
                                 return (
@@ -30,7 +29,6 @@ class SavedJobs extends Component {
                                         <td className="col-md-5"> {item.companyName} </td>
                                         <td className="col-md-2"> {item.companyLocation} </td>
                                     </tr>)
-
                             })
                         }
                     </tbody>
@@ -63,8 +61,7 @@ class SavedJobs extends Component {
             
             var result = i+1 + ") " + position + " @"  + company + " in " + city + '%0A' + '      ' + link + '%0A' + '%0A' ; 
             emailBody = emailBody.concat(result)
-        }
-         
+        }       
         document.location = "mailto:"+"?subject="+"&body="+emailBody;
     }
 }
