@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { pushJobToSaved } from '../redux/actions'
+import classNames from 'classnames'
 
 class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.state = {
             currentPage: 1,
-            jobsPerPage: 25
+            jobsPerPage: 25,
+            disableButton: false
         }
     }
     render() {
@@ -20,6 +22,12 @@ class SearchResults extends Component {
         for (let i = 1; i <= Math.ceil(this.props.jobResults.length / this.state.jobsPerPage); i++) {
             pageNumbers.push(i);
         }
+
+        var buttonClasses = classNames({
+            'previous-page-button': true,
+            'btn': true,
+            'disabled': this.state.currentPage == 1
+        });
 
         return (
             <div className="search-results-field col-md-9">
@@ -49,10 +57,12 @@ class SearchResults extends Component {
 
                     </tbody>
                 </table>
-                
-                <div className="page-footer justify-content-md-center"> 
+
+                <div className="page-footer justify-content-md-center">
                     {/* Render Page Buttons */}
-                    {
+                    <button onClick={this.previousPage.bind(this)} className={buttonClasses}> PREVIOUS </button>
+                    <button onClick={this.nextPage.bind(this)} className="btn page-button"> NEXT </button>
+                    {/* {
                             pageNumbers.map((number, index) => {
 
                             return (
@@ -60,9 +70,8 @@ class SearchResults extends Component {
                             )
 
                         })
-                    }
+                    } */}
                 </div>
-
             </div>
         )
     }
@@ -73,13 +82,38 @@ class SearchResults extends Component {
 
     }
 
+
     //Function that changes page
     nextPage(e) {
-
-        this.setState({
-            currentPage: Number(e.target.id)
+        this.setState((prevState) => {
+            return {
+                currentPage: prevState.currentPage + 1
+            }
         })
     }
+
+    previousPage(e) {
+
+        console.log(document.getElementsByClassName('previous-page-button'))
+        this.setState((prevState) => {
+
+            return {
+                currentPage: prevState.currentPage - 1
+            }
+        })
+
+    }
+
+
+    // console.log (this.props.jobResults)
+    // console.log(i)
+    // console.log(page)
+
+    // this.setState({
+    //     currentPage: Number(e.target.id)
+    // })
+
+
 }
 
 
